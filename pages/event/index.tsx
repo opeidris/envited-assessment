@@ -4,11 +4,23 @@ import Head from 'next/head'
 
 const Event:NextPage = () => {
   const [event, setEvent] = useState(
-    {}
+    {
+      name:"",
+      host:"",
+      dateFrom:"",
+      dateTo:"",
+      location:"",
+      details:""
+    }
   )
 
   useEffect(()=> {
-    setEvent(JSON.parse(localStorage.getItem('event')))
+    if(localStorage.getItem('event')){
+       const eventString:any = localStorage.getItem('event')
+      
+       setEvent(JSON.parse(eventString))
+    }
+
   })
 
   
